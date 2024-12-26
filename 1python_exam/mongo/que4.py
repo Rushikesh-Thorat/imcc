@@ -9,6 +9,21 @@ db = client["MarathonDB"]
 # Create (or switch to) the collection
 collection = db["Participants"]
 
+# Sample data to add to the collection
+participants_data = [
+    {"RegistrationNumber": "A001", "Name": "John Doe"},
+    {"RegistrationNumber": "A002", "Name": "Jane Smith"},
+    {"RegistrationNumber": "A003", "Name": "Alice Johnson"},
+    {"RegistrationNumber": "A004", "Name": "Bob Brown"},
+    {"RegistrationNumber": "A005", "Name": "Charlie Davis"}
+]
+
+# Insert sample data into the collection
+collection.delete_many({})  # Clear existing data
+collection.insert_many(participants_data)
+print("Sample data has been inserted into the collection.")
+
+# Function to delete a participant by registration number
 def delete_participant_by_registration_number(registration_number):
     query = {"RegistrationNumber": registration_number}
     result = collection.delete_one(query)
@@ -17,13 +32,7 @@ def delete_participant_by_registration_number(registration_number):
     else:
         return f"No participant found with registration number {registration_number}."
 
-def main():
-    while True:
-        registration_number = input("Enter the registration number of the participant who has not reported (or type 'exit' to quit): ")
-        if registration_number.lower() == 'exit':
-            break
-        result = delete_participant_by_registration_number(registration_number)
-        print(result)
-
-if __name__ == "__main__":
-    main()
+# Example usage
+registration_number_to_delete = input("Enter the registration number of the participant who has not reported: ")
+result_message = delete_participant_by_registration_number(registration_number_to_delete)
+print(result_message)
