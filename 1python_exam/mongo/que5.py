@@ -35,14 +35,9 @@ def update_leaves(designation, leaves_taken):
     else:
         return f"No employee found with designation {designation}"
 
-def main():
-    while True:
-        designation = input("Enter the employee's designation (or type 'exit' to quit): ")
-        if designation.lower() == 'exit':
-            break
-        leaves_taken = int(input(f"Enter the number of leaves taken by {designation}: "))
-        result = update_leaves(designation, leaves_taken)
-        print(result)
 
-if __name__ == "__main__":
-    main()
+designation = input("Enter the employee's designation : ")
+leaves_taken = int(input(f"Enter the number of leaves taken by {designation}: "))
+result = update_leaves(designation, leaves_taken)
+print(result)
+
