@@ -32,13 +32,8 @@ def fetch_subject_by_faculty_name(faculty_name):
     else:
         return "This faculty is not teaching any subject in second semester."
 
-def main():
-    while True:
-        faculty_name = input("Enter the faculty name (or type 'exit' to quit): ")
-        if faculty_name.lower() == 'exit':
-            break
-        subject = fetch_subject_by_faculty_name(faculty_name)
-        print(subject)
 
-if __name__ == "__main__":
-    main()
+faculty_name = input("Enter the faculty name : ")
+subject = fetch_subject_by_faculty_name(faculty_name)
+print(subject)
+
