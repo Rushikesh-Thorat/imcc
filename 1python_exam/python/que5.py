@@ -18,5 +18,5 @@ with open("StateDetails.txt", "w") as file:
 df = pd.read_csv("StateDetails.txt", sep=" ", header=None, names=["State", "Capital"])
 
 # Displaying the DataFrame with the heading
-print(" State Capital")
+
 print(df)
