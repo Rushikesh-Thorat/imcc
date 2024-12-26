@@ -29,18 +29,15 @@ def fetch_songs_by_singer(singer_name):
     else:
         return "This singer has no songs in the database."
 
-def main():
-    while True:
-        singer_name = input("Enter the singer's name (or type 'exit' to quit): ")
-        if singer_name.lower() == 'exit':
-            break
-        songs = fetch_songs_by_singer(singer_name)
-        if isinstance(songs, list):
-            print(f"Songs by {singer_name}:")
-            for song in songs:
-                print(f"- {song}")
-        else:
-            print(songs)
 
-if __name__ == "__main__":
-    main()
+singer_name = input("Enter the singer's name : ")
+
+songs = fetch_songs_by_singer(singer_name)
+if isinstance(songs, list):
+    print(f"Songs by {singer_name}:")
+    for song in songs:
+        print(f"- {song}")
+else:
+    print(songs)
+
+
