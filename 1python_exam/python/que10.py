@@ -34,10 +34,8 @@ def verify_attendance(student_name):
         else:
             return f"{student_name} was absent for the lecture"
 
-def main():
-    student_name = input("Enter student name: ")
-    result = verify_attendance(student_name)
-    print(result)
+student_name = input("Enter student name: ")
+result = verify_attendance(student_name)
+print(result)
 
-if __name__ == "__main__":
-    main()
+
