@@ -23,5 +23,4 @@ def book_tickets():
     except ValueError:
         print("Invalid input. Please enter a number between 1 and 5.")
 
-if __name__ == "__main__":
-    book_tickets()
+book_tickets()
