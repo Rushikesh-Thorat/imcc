@@ -24,12 +24,9 @@ def login():
 
     if attempts >= max_attempts:
         raise MaximumLoginAttemptsExceededError
+try:
+    login()
+except MaximumLoginAttemptsExceededError as e:
+    print(e)
 
-def main():
-    try:
-        login()
-    except MaximumLoginAttemptsExceededError as e:
-        print(e)
 
-if __name__ == "__main__":
-    main()
