@@ -26,5 +26,5 @@ def check_speed():
     except ValueError:
         print("Invalid input for speed. Please enter a valid number.")
 
-if __name__ == "__main__":
-    check_speed()
+
+check_speed()
