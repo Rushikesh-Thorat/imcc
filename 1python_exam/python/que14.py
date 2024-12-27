@@ -12,19 +12,17 @@ class SpeedingLimitExceededError(Exception):
 def issue_challan(vehicle_number, speed):
     print(f"Challan issued to vehicle number {vehicle_number} for speeding at {speed} km/hr.")
 
-def main():
-    try:
-        speed = float(input("Enter your speed (in km/hr): "))
-        if speed > 120:
-            vehicle_number = input("Enter your vehicle number: ")
-            raise SpeedingLimitExceededError
-        else:
-            print("You are within the speed limit. Drive safely!")
+try:
+    speed = float(input("Enter your speed (in km/hr): "))
+    if speed > 120:
+        vehicle_number = input("Enter your vehicle number: ")
+        raise SpeedingLimitExceededError
+    else:
+        print("You are within the speed limit. Drive safely!")
 
-    except SpeedingLimitExceededError:
-        issue_challan(vehicle_number, speed)
-    except ValueError:
-        print("Invalid input for speed. Please enter a valid number.")
+except SpeedingLimitExceededError:
+    issue_challan(vehicle_number, speed)
+except ValueError:
+    print("Invalid input for speed. Please enter a valid number.")
 
-if __name__ == "__main__":
-    main()
+
