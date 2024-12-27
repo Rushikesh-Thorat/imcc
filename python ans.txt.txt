@@ -1,0 +1,616 @@
+///////////////////////////////////////////////////////////NumPy And Pandas//////////////////////////////////////////////////////////////
+"""Q.1"""
+import numpy as np
+
+# Age data for families
+ages = np.array([
+    [70, 5, 12, 68, 40, 43],
+    [6, 10, 40, 40, 69, 71],
+    [68, 65, 10, 12, 40, 38],
+    [65, 67, 37, 5, 8, 39],
+    [70, 69, 36, 38, 10, 8]
+])
+
+# Sort ages within each family
+sorted_ages = np.sort(ages, axis=1)
+
+print()
+# Print sorted ages and youngest/oldest members of each family
+for i, family in enumerate(sorted_ages):
+    youngest = family[0]  # First element after sorting
+    oldest = family[-1]  # Last element after sorting
+    print(f"Youngest child of family {i+1} is: {youngest}")
+    print(f"Oldest child of family {i+1} is: {oldest}")
+
+
+"""Q.2"""
+import numpy as np
+
+runs = np.array([[12,10,2,3,5,0],
+                [20,2,3,0,15,4],
+                [10,8,3,0,0,9]])
+
+avg = np.mean(runs,axis=1)
+
+for i, matches in enumerate(avg):
+    print(avg[i])
+
+"""Q.3"""
+import numpy as np
+
+first_names = np.array(["Ram", "Abhay", "Murli", "Neha"])
+last_names = np.array(["Singh", "Kumar", "Sharma", "Mishra"])
+
+full_names = np.char.add(first_names, " ")
+full_names = np.char.add(full_names, last_names)
+for i,name in enumerate(full_names):
+    print(full_names[i])
+
+"""Q.4"""
+import numpy as np
+
+details = np.array(["ABC:22","PQR:21","XYZ:22","DEF:23","DAS:21","GHF:22","JHK:22","RST:21","YUG:21","OPL:22","BNM:23","FBV:21"])
+
+names = np.array([d.split(':')[0] for d in details])
+print(names)
+
+
+"""Q.5"""
+import pandas as pd
+
+# Read the file and display the data
+state_data = pd.read_csv('StateDetails.txt',names=["STATE", "CAPITAL"],delim_whitespace=True)
+
+# Display the data
+print(state_data)
+
+"""Q.6"""
+import pandas as pd
+
+details = pd.read_csv('AvengerDetails.txt',names=["Avenger","Characteristics"],sep='-')
+
+print(details)
+
+///////////////////////////////////////////////////////////Regex and filehandling/////////////////////////////////////////////////////////
+"""Q.1"""
+import re
+
+def remove_whitespaces(input_filename, output_filename):
+    # Open the source file in read mode and the output file in write mode
+    with open(input_filename, 'r') as infile, open(output_filename, 'w') as outfile:
+        for line in infile:
+            # Use regex to remove all whitespace characters (spaces, tabs, newlines)
+            compact_line = re.sub(r'\s+', '', line)  # \s+ matches one or more whitespace characters
+            # Write the compacted line to the output file
+            outfile.write(f'{compact_line}\n')
+
+# Call the function with the input and output file names
+remove_whitespaces('example.txt', 'text.txt')
+
+"""Q.2"""
+import re
+
+def seperateSmBig(filename,destination):
+    small = ""
+    capital = ""
+    with open(filename,'r') as file1:
+        for line in file1:
+            small += "".join(re.findall(r'[a-z]',line))
+            capital += "".join(re.findall(r'[A-Z]',line))
+    result = f'{small} \n{capital}'
+    with open(destination,'w') as file2:
+        file2.write(result)
+    print(f'The total number of small letters:{len(small)}')
+    print(f'The total number of capital letters:{len(capital)}')
+
+seperateSmBig('source.txt','destination.txt')
+
+"""Q.3"""
+import re 
+
+def Numbers(filename,destination):
+    numbers = []
+    with open(filename,'r') as file1:
+        for line in file1:
+            found_numbers =re.findall(r'\d+',line)
+            numbers.extend(found_numbers)
+    with open(destination,'w') as file2:
+        file2.write('\n'.join(numbers))
+    
+
+Numbers('Contacts.txt','MobileNumber.txt')
+
+"""Q.4"""
+import re 
+
+def attendance_conf(filename):
+    student_name = input("Enter student name: ").strip()
+    with open(filename,'r') as file:
+        names = file.readlines()
+    for name in names:
+        cleaned_name = name.strip()
+        print(f"Checking: {cleaned_name}")
+        if re.search(f'{student_name}',name.strip(),re.IGNORECASE):
+            print(f"{student_name}'s attendance is marked")
+            return
+    print(f'{student_name} was absent for the lecture')
+
+attendance_conf('attendance.txt')
+
+//////////////////////////////////////////////////////////Exception Handling//////////////////////////////////////////////////////////////
+# """Q.1"""
+# class LearnerUnderAgeError(Exception):
+#     def __init__(self, message):
+#         self.message = message
+#         super().__init__(self.message)
+
+
+# def enroll_for_driving_school(name, address, age):
+#     try:
+#         if age < 18:
+#             raise LearnerUnderAgeError(f"{name}, you are underage to enroll in the driving school.")
+#     except LearnerUnderAgeError as e:
+#         print(e)  # Print the custom error message
+#     else:
+#         print(f"Enrollment successful for {name} at {address}. Age: {age}")
+#     finally:
+#         print("Thank you")
+
+# # Taking user input for enrollment
+# name = input("Enter your name: ")
+# address = input("Enter your address: ")
+# age = int(input("Enter your age: "))
+
+
+# enroll_for_driving_school(name, address, age)
+
+# """Q.2"""
+# class FreebieLimitExceededError(Exception):
+#     def __init__(self, message):
+#         self.message = message
+#         super().__init__(self.message)
+
+
+# def order_cakes():
+   
+#     paid_cake = input("Enter the flavour of your first PAID cake: ")
+    
+   
+#     try:
+#         free_cakes = int(input("How many FREE cakes would you like to add (0, 1, or 2)? "))
+        
+
+#         if free_cakes > 2:
+#             raise FreebieLimitExceededError("You cannot add more than 2 free cakes.")
+        
+#         if free_cakes == 0:
+#             print("No FREE cakes added.")
+#         else:
+#             print(f"{free_cakes} FREE cake(s) added to your cart.")
+    
+#     except FreebieLimitExceededError as e:
+#         print(e) 
+#     except ValueError:
+#         print("Invalid input! Please enter a number (0, 1, or 2) for free cakes.")
+
+
+# order_cakes()
+
+# """Q.3"""
+# class MaximumLoginAttemptsExceededError(Exception):
+#     def __init__(self,message):
+#         super().__init__(message)
+#         self.message = message
+
+# def Login():
+#     try:
+#         tries = 3
+#         while True:
+#             username = input('Enter username: ')
+#             password = input('Enter password: ')
+#             saved_username = 'Nihal'
+#             saved_password = 12345678
+#             if username == saved_username and password == saved_password:
+#                 print("You are logged in")
+#                 return
+#             else:
+#                 tries -=1
+#                 print(f"you have only {tries} tries remaining!")
+#             if tries==0:
+#                 raise MaximumLoginAttemptsExceededError("You have exhausted through your attempts!")
+#     except MaximumLoginAttemptsExceededError as e:
+#         print(e)
+
+# Login()
+
+"""Q.5"""
+class TooManyTicketsBooked(Exception):
+    def __init__(self,message):
+        super().__init__(message)
+        self.message = message
+
+def ticketbooker():
+    try:
+        tickets = int(input("Enter number of tickets to but: "))
+        if tickets < 5:
+            print("The tickets are booked!")
+        else:
+            raise TooManyTicketsBooked(f"You have exceeded the limit of tickets a person can buy by {tickets-5}")
+    except TooManyTicketsBooked as t:
+            print(t)
+
+ticketbooker()
+
+        
+
+
+
+# """Q.6"""   
+# class OverSpeedingError(Exception):
+#     def __init__(self,vehicle_number,speed):
+#         super().__init__(f"The vehicle {vehicle_number} is overspeeding at {speed}km/hr")
+
+# def speedCheck(vehicle_number,speed):
+#     if speed > 80:
+#         raise OverSpeedingError(vehicle_number, speed)
+#     else:
+#         print(f"Vehicle {vehicle_number} is within speed limit.")
+
+    
+# def HighwayCam():
+#     try:
+#         vehicle_number = input("Enter vehicle number: ")
+#         speed = int(input('Enter speed: '))
+#         speedCheck(vehicle_number,speed)
+#     except OverSpeedingError as e:
+#         print(e)
+
+# HighwayCam()
+
+//////////////////////////////////////////////////////////MongoDB/////////////////////////////////////////////////////////////////////////
+
+from pymongo import MongoClient
+
+"""Q.1"""
+from pymongo import MongoClient
+# Connect to MongoDB
+client = MongoClient('mongodb://localhost:27017/')  # Replace with your MongoDB URI if needed
+db = client['library']  # Database
+collection = db['books']  # Collection
+
+def add_books():
+    for i in range(5):  # Take input for 5 books
+        print(f"Enter details for book {i+1}:")
+        
+        # Collect book details from the librarian
+        title = input("Title: ")
+        author = input("Author: ")
+        price = float(input("Price: "))  # Assuming price is a float
+        subject = input("Subject: ")
+        publication_year = int(input("Publication Year: "))  # Assuming publication year is an integer
+
+        # Create a book dictionary
+        book = {
+            "Title": title,
+            "Author": author,
+            "Price": price,
+            "Subject": subject,
+            "PublicationYear": publication_year
+        }
+
+        # Insert the book into MongoDB
+        collection.insert_one(book)
+        print(f"Book '{title}' by {author} added successfully!\n")
+
+# Call the function to add books
+add_books()
+
+# Close MongoDB connection
+client.close()
+
+
+"""Q.2"""
+from pymongo import MongoClient
+client = MongoClient('mongodb://localhost:27017/')  # Replace with your MongoDB URI if needed
+db = client['mca_department']  # Database
+collection = db['faculty_subjects']  # Collection
+
+faculty_data = [
+    {"faculty_name": "Mr. ABC", "subject": "Java Programming"},
+    {"faculty_name": "Ms. PQR", "subject": "Full Stack Development"},
+    {"faculty_name": "Ms. XYZ", "subject": "Cyber Security"},
+    {"faculty_name": "Mr. JKL", "subject": "Software Project Management"},
+    {"faculty_name": "Mr. LMN", "subject": "Research Methodology"},
+    {"faculty_name": "Ms. BNC", "subject": "Soft Skills"}
+]
+
+def insert_faculty_data():
+    
+    collection.delete_many({})
+
+    collection.insert_many(faculty_data)
+
+def get_subject_by_faculty():
+    faculty_name = input("Enter faculty name: ").strip()
+    faculty = collection.find_one({"faculty_name": faculty_name})
+    if faculty:
+        print(f"{faculty_name} is teaching {faculty['subject']}")
+    else:
+        print(f"This faculty is not teaching any subject in the second semester.")
+
+
+def get_faculty_by_subject():
+    subject_name = input("Enter subject name: ").strip()
+    faculty = collection.find_one({"subject": subject_name})
+    if faculty:
+        print(f"The faculty teaching {subject_name} is {faculty['faculty_name']}")
+    else:
+        print(f"No faculty is teaching {subject_name} in the second semester.")
+
+
+def main():
+    # Insert data into MongoDB (only once, if not already present)
+    insert_faculty_data()
+    
+    while True:
+        print("\nMCA Department Faculty Management System")
+        print("1. Get subject by faculty name")
+        print("2. Get faculty by subject name")
+        print("3. Exit")
+        
+        choice = input("Enter your choice: ").strip()
+        
+        if choice == "1":
+            get_subject_by_faculty()
+        elif choice == "2":
+            get_faculty_by_subject()
+        elif choice == "3":
+            print("Exiting the program.")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+main()
+
+client.close()
+
+
+"""Q.3"""
+from pymongo import MongoClient
+# Connect to MongoDB
+client = MongoClient('mongodb://localhost:27017/')  # Replace with your MongoDB URI if needed
+db = client['jukebox']  # Database
+collection = db['songs']  # Collection
+
+# Pre-fill the songs data
+songs_data = [
+    {"singer_name": "Sonu Nigam", "song_title": "Kal ho na ho"},
+    {"singer_name": "Sonu Nigam", "song_title": "Mein agar kahu"},
+    {"singer_name": "Sonu Nigam", "song_title": "Abhi mujhme kahi"},
+    {"singer_name": "Sonu Nigam", "song_title": "Tumse milke dil ka"},
+    {"singer_name": "Sonu Nigam", "song_title": "Yeh dil diwana"},
+    {"singer_name": "Arijit Singh", "song_title": "Tera yaar hu mein"},
+    {"singer_name": "Arijit Singh", "song_title": "Sajni re"},
+    {"singer_name": "Arijit Singh", "song_title": "Phir le aya dil"},
+    {"singer_name": "Arijit Singh", "song_title": "Kabira"},
+    {"singer_name": "Arijit Singh", "song_title": "Kabhi jo badal barse"},
+    {"singer_name": "Shreya Ghoshal", "song_title": "Mere dholna"},
+    {"singer_name": "Shreya Ghoshal", "song_title": "Param sundari"},
+    {"singer_name": "Shreya Ghoshal", "song_title": "Jadu hai nasha hai"},
+    {"singer_name": "Shreya Ghoshal", "song_title": "More piya"},
+    {"singer_name": "Shreya Ghoshal", "song_title": "Tare ginn"}
+]
+
+# Insert the songs data into MongoDB (optional, can be skipped if data is already in the DB)
+def insert_songs_data():
+    collection.delete_many({})  # Clear any existing data (optional)
+    collection.insert_many(songs_data)
+
+# Function to fetch songs by singer name
+def get_songs_by_singer():
+    singer_name = input("Enter singer name: ").strip()
+    songs = collection.find({"singer_name": singer_name})
+    
+    if songs.count() > 0:
+        print(f"\nSongs by {singer_name}:")
+        song_list = []
+        for index, song in enumerate(songs, start=1):
+            print(f"{index}. {song['song_title']}")
+            song_list.append(song['song_title'])
+        
+        # Allow user to select a song
+        song_choice = int(input("\nSelect a song number to play (enter the number): "))
+        if 1 <= song_choice <= len(song_list):
+            print(f"\nNow playing: {song_list[song_choice - 1]}")
+        else:
+            print("Invalid song selection.")
+    else:
+        print(f"No songs found for {singer_name}.")
+
+# Main program
+def main():
+    # Insert the songs data into MongoDB (only once, if not already present)
+    insert_songs_data()
+    
+    while True:
+        print("\nJukebox Program")
+        print("1. Get songs by singer name")
+        print("2. Exit")
+        
+        choice = input("Enter your choice: ").strip()
+        
+        if choice == "1":
+            get_songs_by_singer()
+        elif choice == "2":
+            print("Exiting the program.")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+# Run the program
+main()
+
+# Close MongoDB connection
+client.close()
+
+
+"""Q.4"""
+from pymongo import MongoClient
+# Connect to MongoDB
+client = MongoClient('mongodb://localhost:27017/')  # Replace with your MongoDB URI if needed
+db = client['marathon']  # Database
+collection = db['registrations']  # Collection
+
+# Pre-fill some example data (optional)
+registrations_data = [
+    {"registration_number": "M1001", "name": "John Doe", "age": 30, "category": "Men's Open"},
+    {"registration_number": "M1002", "name": "Jane Smith", "age": 25, "category": "Women's Open"},
+    {"registration_number": "M1003", "name": "Ravi Kumar", "age": 35, "category": "Men's Open"},
+    {"registration_number": "M1004", "name": "Sita Rani", "age": 28, "category": "Women's Open"},
+    {"registration_number": "M1005", "name": "Ajay Patel", "age": 40, "category": "Men's Veteran"}
+]
+
+# Insert example data into the MongoDB collection (optional, can be skipped if data is already in DB)
+def insert_registration_data():
+    collection.delete_many({})  # Clear existing data (optional)
+    collection.insert_many(registrations_data)
+
+# Function to delete participant's record based on registration number
+def delete_participant_record():
+    reg_number = input("Enter the registration number of the participant who did not report: ").strip()
+    
+    # Find and delete the record with the given registration number
+    result = collection.delete_one({"registration_number": reg_number})
+    
+    if result.deleted_count > 0:
+        print(f"Participant with registration number {reg_number} has been removed from the records.")
+    else:
+        print(f"No participant found with registration number {reg_number}.")
+
+# Main program
+def main():
+    # Insert data into MongoDB (only once, if not already present)
+    insert_registration_data()
+    
+    while True:
+        print("\nMumbai Marathon - Participant Management System")
+        print("1. Delete participant who did not report")
+        print("2. Exit")
+        
+        choice = input("Enter your choice: ").strip()
+        
+        if choice == "1":
+            delete_participant_record()
+        elif choice == "2":
+            print("Exiting the program.")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+# Run the program
+main()
+
+# Close MongoDB connection
+client.close()
+
+
+"""Q.5"""
+from pymongo import MongoClient
+
+# Connect to MongoDB
+client = MongoClient('mongodb://localhost:27017/')  # Replace with your MongoDB URI if needed
+db = client['employee_management']  # Database
+collection = db['employee_leaves']  # Collection
+
+# Business Rules: Total leaves allotted for each designation
+designation_leaves = {
+    "Manager": 24,
+    "Floor Supervisor": 30,
+    "Machine Staff": 20
+}
+
+# Function to calculate remaining leaves
+def calculate_remaining_leaves(designation, leaves_taken):
+    total_leaves = designation_leaves.get(designation)
+    if total_leaves is None:
+        print(f"Invalid designation: {designation}")
+        return None
+    remaining_leaves = total_leaves - leaves_taken
+    return remaining_leaves
+
+# Function to update employee's remaining leaves
+def update_employee_leaves():
+    employee_id = input("Enter employee ID: ").strip()
+    name = input("Enter employee name: ").strip()
+    designation = input("Enter employee designation (Manager, Floor Supervisor, Machine Staff): ").strip()
+    leaves_taken = int(input("Enter number of leaves taken: ").strip())
+    
+    remaining_leaves = calculate_remaining_leaves(designation, leaves_taken)
+    if remaining_leaves is None:
+        return
+    
+    # Update the employee's record in MongoDB
+    employee = {
+        "employee_id": employee_id,
+        "name": name,
+        "designation": designation,
+        "total_leaves": designation_leaves[designation],
+        "leaves_taken": leaves_taken,
+        "remaining_leaves": remaining_leaves
+    }
+    
+    # Check if employee already exists, if yes, update their record
+    result = collection.update_one(
+        {"employee_id": employee_id},
+        {"$set": employee},
+        upsert=True  # Insert a new record if the employee doesn't exist
+    )
+    
+    if result.modified_count > 0:
+        print(f"Employee {name}'s remaining leaves have been updated.")
+    else:
+        print(f"Employee {name} added with remaining leaves calculated.")
+
+# Function to display all employees' remaining leaves
+def display_remaining_leaves():
+    employees = collection.find()
+    print("\nEmployee Remaining Leaves:")
+    for employee in employees:
+        print(f"Employee ID: {employee['employee_id']}, Name: {employee['name']}, Remaining Leaves: {employee['remaining_leaves']}")
+
+# Main program
+def main():
+    while True:
+        print("\nEmployee Leave Management System")
+        print("1. Update employee remaining leaves")
+        print("2. Display all employees' remaining leaves")
+        print("3. Exit")
+        
+        choice = input("Enter your choice: ").strip()
+        
+        if choice == "1":
+            update_employee_leaves()
+        elif choice == "2":
+            display_remaining_leaves()
+        elif choice == "3":
+            print("Exiting the program.")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+# Run the program
+main()
+
+# Close MongoDB connection
+client.close()
+
+
+
+
+
+    
+
+
+
+ 
+
