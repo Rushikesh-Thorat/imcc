@@ -26,5 +26,4 @@ def enroll_in_driving_school():
     except ValueError:
         print("Invalid input for age. Please enter a valid number.")
 
-if __name__ == "__main__":
-    enroll_in_driving_school()
+enroll_in_driving_school()
