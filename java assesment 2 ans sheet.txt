@@ -1,0 +1,2396 @@
+Que 1 : In the project ManageEmployees, add a package 
+pkgOrgStructre. Within that package add classes Employee, 
+Manager,Developer and Tester and EmployeeDemo. All 
+classes except EmployeeDemo should have its constructor. 
+Connect the valid business classes using Inheritance. 
+
+Developer.java
+
+package pkgOrgStructure;
+
+public class Developer extends Employee{
+	String programmingLanguage;
+
+	public Developer(String name, int empId, double salary, String programmingLanguage) {
+		super(name, empId, salary);
+		this.programmingLanguage = programmingLanguage;
+		
+	}
+	
+	@Override
+	public void displayInfo() {
+		super.displayInfo();
+		System.out.println("Programming Language: " + programmingLanguage);
+	}
+}
+
+Employee.java
+
+package pkgOrgStructure;
+public class Employee {
+	String name;
+	int empId;
+	double salary;
+
+	public Employee(String name, int empId, double salary) {
+		this.name = name;
+		this.empId = empId;
+		this.salary = salary;
+
+	}
+
+	public void displayInfo() {
+		System.out.println("Employee ID: " + empId);
+		System.out.println("Name: " + name);
+		System.out.println("Salary: " + salary);
+//		empId, empNm, empAge, empPanCrd, empAadharCrd, empDept, empSal, empContactNbr,empExp
+	}
+}
+
+EmployeeDemo.java
+
+package pkgOrgStructure;
+
+public class EmployeeDemo {
+	public static void main(String[] args) {
+		Manager mgr = new Manager("Vedant", 101, 75000, "IT");
+		Developer dev = new Developer("Atharv", 102, 60000, "Java");
+		Tester tester = new Tester("Yallari", 103, 50000, "Selenium");
+		
+		
+		System.out.println("Manager Details: ");
+		mgr.displayInfo();
+		System.out.println();
+		
+		System.out.println("Developer Details: ");
+		dev.displayInfo();
+		System.out.println();
+		
+		System.out.println("Tester Details: ");
+		tester.displayInfo();
+		
+	}
+}
+
+Manager.java 
+
+package pkgOrgStructure;
+
+public class Manager extends Employee{
+	String department;
+	
+	public Manager(String name, int empId, double salary, String department) {
+		super(name, empId, salary);
+		this.department = department;
+	}
+	@Override
+	public void displayInfo() {
+		super.displayInfo();
+		System.out.println("Department: "+ department);
+	}
+}
+
+Tester.java
+
+package pkgOrgStructure;
+
+public class Tester extends Employee {
+	String testingTool;
+	
+	public Tester(String name, int empId, double salary, String testingTool) {
+		super(name, empId, salary);
+		this.testingTool = testingTool;
+	}
+	
+	@Override
+	public void displayInfo() {
+		super.displayInfo();
+		System.out.println("Testing Tool: " + testingTool);
+	}
+}
+
+Que 2 :In the classes created above make the following changes.  
+a. Add the attributes empId, empNm, empAge, empPanCrd, 
+empAadharCrd, empDept, empSal, empContactNbr,empExp 
+in Employee class.
+
+Developer.java
+package pkgOrgStructure2;
+
+public class Developer extends Employee {
+    // Additional attributes
+    private String nameOfTheTeam;
+    private String nameOfManager;
+    private String technologies;
+
+    // Constructor
+    public Developer(int empId, String empNm, int empAge, String empPanCrd, String empAadharCrd, String empDept, double empSal, String empContactNbr, int empExp, String nameOfTheTeam, String nameOfManager, String technologies) {
+        super(empId, empNm, empAge, empPanCrd, empAadharCrd, empDept, empSal, empContactNbr, empExp);
+        setNameOfTheTeam(nameOfTheTeam);
+        setNameOfManager(nameOfManager);
+        setTechnologies(technologies);
+    }
+
+    // Getters and Setters
+    public String getNameOfTheTeam() {
+        return nameOfTheTeam;
+    }
+
+    public void setNameOfTheTeam(String nameOfTheTeam) {
+        this.nameOfTheTeam = nameOfTheTeam;
+    }
+
+    public String getNameOfManager() {
+        return nameOfManager;
+    }
+
+    public void setNameOfManager(String nameOfManager) {
+        this.nameOfManager = nameOfManager;
+    }
+
+    public String getTechnologies() {
+        return technologies;
+    }
+
+    public void setTechnologies(String technologies) {
+        this.technologies = technologies;
+    }
+
+    // Override displayDetails to include developer-specific details
+    @Override
+    public void displayDetails() {
+        super.displayDetails();
+        System.out.println("Name of the Team: " + nameOfTheTeam);
+        System.out.println("Name of the Manager: " + nameOfManager);
+        System.out.println("Technologies: " + technologies);
+    }
+}
+
+
+Employee.java
+
+package pkgOrgStructure2;
+
+
+public class Employee {
+	// Private attributes
+	private int empId;
+	private String empNm;
+	private int empAge;
+	private String empPanCrd;
+	private String empAadharCrd;
+	private String empDept;
+	private double empSal;
+	private String empContactNbr;
+	private int empExp;
+
+	// Constructor
+	public Employee(int empId, String empNm, int empAge, String empPanCrd, String empAadharCrd, String empDept,
+			double empSal, String empContactNbr, int empExp) {
+		setEmpId(empId);
+		setEmpNm(empNm);
+		setEmpAge(empAge);
+		setEmpPanCrd(empPanCrd);
+		setEmpAadharCrd(empAadharCrd);
+		setEmpDept(empDept);
+		setEmpSal(empSal);
+		setEmpContactNbr(empContactNbr);
+		setEmpExp(empExp);
+	}
+
+	// Getters and Setters (Accessors and Mutators)
+	public int getEmpId() {
+		return empId;
+	}
+
+	public void setEmpId(int empId) {
+		this.empId = empId;
+	}
+
+	public String getEmpNm() {
+		return empNm;
+	}
+
+	public void setEmpNm(String empNm) {
+		this.empNm = empNm;
+	}
+
+	public int getEmpAge() {
+		return empAge;
+	}
+
+	public void setEmpAge(int empAge) {
+		this.empAge = empAge;
+	}
+
+	public String getEmpPanCrd() {
+		return empPanCrd;
+	}
+
+	public void setEmpPanCrd(String empPanCrd) {
+		this.empPanCrd = empPanCrd;
+	}
+
+	public String getEmpAadharCrd() {
+		return empAadharCrd;
+	}
+
+	public void setEmpAadharCrd(String empAadharCrd) {
+		this.empAadharCrd = empAadharCrd;
+	}
+
+	public String getEmpDept() {
+		return empDept;
+	}
+
+	public void setEmpDept(String empDept) {
+		this.empDept = empDept;
+	}
+
+	public double getEmpSal() {
+		return empSal;
+	}
+
+	public void setEmpSal(double empSal) {
+		this.empSal = empSal;
+	}
+
+	public String getEmpContactNbr() {
+		return empContactNbr;
+	}
+
+	public void setEmpContactNbr(String empContactNbr) {
+		this.empContactNbr = empContactNbr;
+	}
+
+	public int getEmpExp() {
+		return empExp;
+	}
+
+	public void setEmpExp(int empExp) {
+		this.empExp = empExp;
+	}
+
+	// Method to display employee details
+	public void displayDetails() {
+		System.out.println("Employee ID: " + empId);
+		System.out.println("Employee Name: " + empNm);
+		System.out.println("Employee Age: " + empAge);
+		System.out.println("Employee PAN: " + empPanCrd);
+		System.out.println("Employee Aadhar: " + empAadharCrd);
+		System.out.println("Employee Department: " + empDept);
+		System.out.println("Employee Salary: " + empSal);
+		System.out.println("Employee Contact Number: " + empContactNbr);
+		System.out.println("Employee Experience: " + empExp + " years");
+	}
+}
+
+EmployeeDemo.java
+
+package pkgOrgStructure2;
+
+public class EmployeeDemo {
+    public static void main(String[] args) {
+        // Create objects of Employee, Manager, Developer, and Tester
+        Employee employee = new Employee(101, "Vedant", 30, "ABCDE1234F", "123456789012", "HR", 50000, "9876543210", 5);
+        Manager manager = new Manager(201, "Yallari", 35, "FGHIJ5678K", "987654321098", "IT", 80000, "8765432109", 10, 3, 15);
+        Developer developer = new Developer(301, "Atharv", 28, "LMNOP9012Q", "567890123456", "IT", 60000, "7654321098", 4, "Dev Team 1", "Yallari", "Java, Python");
+        Tester tester = new Tester(401, "Kunal", 32, "QRSTU3456V", "654321098765", "QA", 55000, "6543210987", 6, "QA Team 1", "Yallari", "Automation");
+
+        // Display details of each employee
+        System.out.println("Employee Details:");
+        employee.displayDetails();
+
+        System.out.println("\nManager Details:");
+        manager.displayDetails();
+
+        System.out.println("\nDeveloper Details:");
+        developer.displayDetails();
+
+        System.out.println("\nTester Details:");
+        tester.displayDetails();
+    }
+}
+
+Manager.java
+
+package pkgOrgStructure2;
+
+public class Manager extends Employee {
+    // Additional attributes
+    private int noOfTeams;
+    private int noOfReportees;
+
+    // Constructor
+    public Manager(int empId, String empNm, int empAge, String empPanCrd, String empAadharCrd, String empDept, double empSal, String empContactNbr, int empExp, int noOfTeams, int noOfReportees) {
+        super(empId, empNm, empAge, empPanCrd, empAadharCrd, empDept, empSal, empContactNbr, empExp);
+        setNoOfTeams(noOfTeams);
+        setNoOfReportees(noOfReportees);
+    }
+
+    // Getters and Setters
+    public int getNoOfTeams() {
+        return noOfTeams;
+    }
+
+    public void setNoOfTeams(int noOfTeams) {
+        this.noOfTeams = noOfTeams;
+    }
+
+    public int getNoOfReportees() {
+        return noOfReportees;
+    }
+
+    public void setNoOfReportees(int noOfReportees) {
+        this.noOfReportees = noOfReportees;
+    }
+
+    // Override displayDetails to include manager-specific details
+    @Override
+    public void displayDetails() {
+        super.displayDetails();
+        System.out.println("Number of Teams: " + noOfTeams);
+        System.out.println("Number of Reportees: " + noOfReportees);
+    }
+}
+
+Tester.java
+
+package pkgOrgStructure2;
+
+public class Tester extends Employee {
+    // Additional attributes
+    private String nameOfTheTeam;
+    private String nameOfManager;
+    private String testingType;
+
+    // Constructor
+    public Tester(int empId, String empNm, int empAge, String empPanCrd, String empAadharCrd, String empDept, double empSal, String empContactNbr, int empExp, String nameOfTheTeam, String nameOfManager, String testingType) {
+        super(empId, empNm, empAge, empPanCrd, empAadharCrd, empDept, empSal, empContactNbr, empExp);
+        setNameOfTheTeam(nameOfTheTeam);
+        setNameOfManager(nameOfManager);
+        setTestingType(testingType);
+    }
+
+    // Getters and Setters
+    public String getNameOfTheTeam() {
+        return nameOfTheTeam;
+    }
+
+    public void setNameOfTheTeam(String nameOfTheTeam) {
+        this.nameOfTheTeam = nameOfTheTeam;
+    }
+
+    public String getNameOfManager() {
+        return nameOfManager;
+    }
+
+    public void setNameOfManager(String nameOfManager) {
+        this.nameOfManager = nameOfManager;
+    }
+
+    public String getTestingType() {
+        return testingType;
+    }
+
+    public void setTestingType(String testingType) {
+        this.testingType = testingType;
+    }
+
+    // Override displayDetails to include tester-specific details
+    @Override
+    public void displayDetails() {
+        super.displayDetails();
+        System.out.println("Name of the Team: " + nameOfTheTeam);
+        System.out.println("Name of the Manager: " + nameOfManager);
+        System.out.println("Testing Type: " + testingType);
+    }
+}
+
+Que 3 :In the classes created above make the following changes: 
+a. Add details() in the Employee class. It should print the 
+values of all the instance variables of the Employee class. 
+b. Add computeSalary() in the Employee class. This should 
+be used by the subclasses to calculate their salary
+
+
+Developer.java
+package pkgOrgStructure3;
+
+public class Developer extends Employee {
+	
+	    private String nameOfTheTeam, nameOfManager, technologies;
+
+	    public Developer(int empId, String empNm, int empAge, String empPanCrd, String empAadharCrd,
+	                     String empDept, double empSal, String empContactNbr, int empExp,
+	                     String nameOfTheTeam, String nameOfManager, String technologies) {
+	        super(empId, empNm, empAge, empPanCrd, empAadharCrd, empDept, empSal, empContactNbr, empExp);
+	        this.nameOfTheTeam = nameOfTheTeam;
+	        this.nameOfManager = nameOfManager;
+	        this.technologies = technologies;
+	    }
+
+	    // Override details()
+	    @Override
+	    public void details() {
+	        super.details();
+	        System.out.println("Team: " + nameOfTheTeam + ", Manager: " + nameOfManager + ", Technologies: " + technologies);
+	    }
+
+	    // Override computeSalary()
+	    @Override
+	    public void computeSalary() {
+	        empSal *= 6;
+	        System.out.println("Updated Developer Salary: " + empSal);
+	    }
+	}
+
+Employee.java
+
+package pkgOrgStructure3;
+
+public class Employee {
+	private int empId, empAge, empExp;
+	private String empNm, empPanCrd, empAadharCrd, empDept, empContactNbr;
+	protected double empSal; // Protected to allow modification in subclasses
+
+	// Constructor
+	public Employee(int empId, String empNm, int empAge, String empPanCrd, String empAadharCrd, String empDept,
+			double empSal, String empContactNbr, int empExp) {
+		this.empId = empId;
+		this.empNm = empNm;
+		this.empAge = empAge;
+		this.empPanCrd = empPanCrd;
+		this.empAadharCrd = empAadharCrd;
+		this.empDept = empDept;
+		this.empSal = empSal;
+		this.empContactNbr = empContactNbr;
+		this.empExp = empExp;
+	}
+
+	// Print Employee details
+	public void details() {
+		System.out.println("ID: " + empId + ", Name: " + empNm + ", Age: " + empAge + ", PAN: " + empPanCrd
+				+ ", Aadhar: " + empAadharCrd + ", Dept: " + empDept + ", Salary: " + empSal + ", Contact: "
+				+ empContactNbr + ", Experience: " + empExp + " years");
+	}
+
+	// Base method for salary calculation
+	public void computeSalary() {
+		System.out.println("Employee Base Salary: " + empSal);
+	}
+}
+
+EmployeeDemo.java
+
+package pkgOrgStructure3;
+
+public class EmployeeDemo{
+	
+	    public static void main(String[] args) {
+	        Manager mgr = new Manager(101, "Alice", 40, "PAN123", "AAD123", "IT", 90000, "1234567890", 15, 3, 10);
+	        Developer dev = new Developer(102, "Bob", 30, "PAN456", "AAD456", "IT", 70000, "9876543210", 8, "Alpha", "Alice", "Java, React");
+	        Tester tester = new Tester(103, "Charlie", 28, "PAN789", "AAD789", "QA", 60000, "5678901234", 5, "Beta", "Alice", "Manual, Automation");
+
+	        // Display details before salary computation
+	        System.out.println("\nBefore Salary Calculation:");
+	        mgr.details();
+	        dev.details();
+	        tester.details();
+
+	        // Compute salaries
+	        System.out.println("\nComputing Salaries...");
+	        mgr.computeSalary();
+	        dev.computeSalary();
+	        tester.computeSalary();
+
+	        // Display updated details after salary computation
+	        System.out.println("\nAfter Salary Calculation:");
+	        mgr.details();
+	        dev.details();
+	        tester.details();
+	    }
+	}
+
+Manager.java
+
+package pkgOrgStructure3;
+
+public class Manager extends Employee {
+	
+	    private int noOfTeams, noOfReportees;
+
+	    public Manager(int empId, String empNm, int empAge, String empPanCrd, String empAadharCrd,
+	                   String empDept, double empSal, String empContactNbr, int empExp,
+	                   int noOfTeams, int noOfReportees) {
+	        super(empId, empNm, empAge, empPanCrd, empAadharCrd, empDept, empSal, empContactNbr, empExp);
+	        this.noOfTeams = noOfTeams;
+	        this.noOfReportees = noOfReportees;
+	    }
+
+	    // Override details()
+	    @Override
+	    public void details() {
+	        super.details();
+	        System.out.println("Teams Managed: " + noOfTeams + ", Reportees: " + noOfReportees);
+	    }
+
+	    // Override computeSalary()
+	    @Override
+	    public void computeSalary() {
+	        empSal *= 8;
+	        System.out.println("Updated Manager Salary: " + empSal);
+	    }
+	}
+
+Tester.java
+
+package pkgOrgStructure3;
+
+public class Tester extends Employee {
+	
+	    private String nameOfTheTeam, nameOfManager, testingType;
+
+	    public Tester(int empId, String empNm, int empAge, String empPanCrd, String empAadharCrd,
+	                  String empDept, double empSal, String empContactNbr, int empExp,
+	                  String nameOfTheTeam, String nameOfManager, String testingType) {
+	        super(empId, empNm, empAge, empPanCrd, empAadharCrd, empDept, empSal, empContactNbr, empExp);
+	        this.nameOfTheTeam = nameOfTheTeam;
+	        this.nameOfManager = nameOfManager;
+	        this.testingType = testingType;
+	    }
+
+	    // Override details()
+	    @Override
+	    public void details() {
+	        super.details();
+	        System.out.println("Team: " + nameOfTheTeam + ", Manager: " + nameOfManager + ", Testing Type: " + testingType);
+	    }
+
+	    // Override computeSalary()
+	    @Override
+	    public void computeSalary() {
+	        empSal *= 5;
+	        System.out.println("Updated Tester Salary: " + empSal);
+	    }
+	}
+
+
+Que 4 :In the previously designed classes, demonstrate use of super 
+keyword to invoke super class details() from within its sub 
+classes.  
+
+Developer.java
+
+package pkgOrgStructure4;
+
+public class Developer extends Employee {
+
+	    private String nameOfTheTeam, nameOfManager, technologies;
+
+	    public Developer(int empId, String empNm, int empAge, String empPanCrd, String empAadharCrd,
+	                     String empDept, double empSal, String empContactNbr, int empExp,
+	                     String nameOfTheTeam, String nameOfManager, String technologies) {
+	        super(empId, empNm, empAge, empPanCrd, empAadharCrd, empDept, empSal, empContactNbr, empExp);
+	        this.nameOfTheTeam = nameOfTheTeam;
+	        this.nameOfManager = nameOfManager;
+	        this.technologies = technologies;
+	    }
+
+	    // Override details() and use super.details()
+	    @Override
+	    public void details() {
+	        super.details();
+	        System.out.println("Team: " + nameOfTheTeam + ", Manager: " + nameOfManager +
+	                ", Technologies: " + technologies);
+	    }
+
+	    // Override computeSalary()
+	    @Override
+	    public void computeSalary() {
+	        empSal *= 6;
+	        System.out.println("Updated Developer Salary: " + empSal);
+	    }
+	}
+
+Employee.java
+
+package pkgOrgStructure4;
+
+/**
+ * In the previously designed classes, demonstrate use of super keyword to
+ * invoke super class details() from within its sub classes.
+ */
+public class Employee {
+	private int empId, empAge, empExp;
+	private String empNm, empPanCrd, empAadharCrd, empDept, empContactNbr;
+	protected double empSal; // Protected to allow modification in subclasses
+
+	// Constructor
+	public Employee(int empId, String empNm, int empAge, String empPanCrd, String empAadharCrd, String empDept,
+			double empSal, String empContactNbr, int empExp) {
+		this.empId = empId;
+		this.empNm = empNm;
+		this.empAge = empAge;
+		this.empPanCrd = empPanCrd;
+		this.empAadharCrd = empAadharCrd;
+		this.empDept = empDept;
+		this.empSal = empSal;
+		this.empContactNbr = empContactNbr;
+		this.empExp = empExp;
+	}
+
+	// Print Employee details
+	public void details() {
+		System.out.println("ID: " + empId + ", Name: " + empNm + ", Age: " + empAge + ", PAN: " + empPanCrd
+				+ ", Aadhar: " + empAadharCrd + ", Dept: " + empDept + ", Salary: " + empSal + ", Contact: "
+				+ empContactNbr + ", Experience: " + empExp + " years");
+	}
+
+	// Base method for salary calculation
+	public void computeSalary() {
+		System.out.println("Employee Base Salary: " + empSal);
+	}
+}
+
+EmployeeDemo.java
+
+package pkgOrgStructure4;
+
+public class EmployeeDemo {
+	    public static void main(String[] args) {
+	        // Creating Manager object
+	        Manager mgr = new Manager(101, "Vedant", 40, "PAN123", "AAD123", "IT", 90000, "1234567890", 15, 3, 10);
+	        
+	        // Creating Developer object
+	        Developer dev = new Developer(102, "Atharv", 30, "PAN456", "AAD456", "IT", 70000, "9876543210", 8, "Alpha", "Vedant", "Java, React");
+	        
+	        // Creating Tester object
+	        Tester tester = new Tester(103, "Yallari", 28, "PAN789", "AAD789", "QA", 60000, "5678901234", 5, "Beta", "Vedant", "Manual, Automation");
+
+	        // Calling details() and computeSalary() for each object
+	        mgr.details();
+	        mgr.computeSalary();
+
+	        dev.details();
+	        dev.computeSalary();
+
+	        tester.details();
+	        tester.computeSalary();
+	    }
+	}
+
+Manager.java
+
+package pkgOrgStructure4;
+
+public class Manager extends Employee {
+	
+	    
+	    private int noOfTeams, noOfReportees;
+
+	    public Manager(int empId, String empNm, int empAge, String empPanCrd, String empAadharCrd,
+	                   String empDept, double empSal, String empContactNbr, int empExp,
+	                   int noOfTeams, int noOfReportees) {
+	        super(empId, empNm, empAge, empPanCrd, empAadharCrd, empDept, empSal, empContactNbr, empExp);
+	        this.noOfTeams = noOfTeams;
+	        this.noOfReportees = noOfReportees;
+	    }
+
+	    // Override details() and use super.details()
+	    @Override
+	    public void details() {
+	        super.details();  // Calls Employee's details() method
+	        System.out.println("Teams Managed: " + noOfTeams + ", Reportees: " + noOfReportees);
+	    }
+
+	    // Override computeSalary()
+	    @Override
+	    public void computeSalary() {
+	        empSal *= 8;
+	        System.out.println("Updated Manager Salary: " + empSal);
+	    }
+	}
+
+Tester.java
+
+package pkgOrgStructure4;
+
+public class Tester extends Employee {
+
+	    private String nameOfTheTeam, nameOfManager, testingType;
+
+	    public Tester(int empId, String empNm, int empAge, String empPanCrd, String empAadharCrd,
+	                  String empDept, double empSal, String empContactNbr, int empExp,
+	                  String nameOfTheTeam, String nameOfManager, String testingType) {
+	        super(empId, empNm, empAge, empPanCrd, empAadharCrd, empDept, empSal, empContactNbr, empExp);
+	        this.nameOfTheTeam = nameOfTheTeam;
+	        this.nameOfManager = nameOfManager;
+	        this.testingType = testingType;
+	    }
+
+	    // Override details() and use super.details()
+	    @Override
+	    public void details() {
+	        super.details();
+	        System.out.println("Team: " + nameOfTheTeam + ", Manager: " + nameOfManager +
+	                ", Testing Type: " + testingType);
+	    }
+
+	    // Override computeSalary()
+	    @Override
+	    public void computeSalary() {
+	        empSal *= 5;
+	        System.out.println("Updated Tester Salary: " + empSal);
+	    }
+	}
+
+
+
+
+Que 5 :Create a package “InterfaceAbstractpkg”. In this package 
+write an interface Area having methods compute() and print(). 
+It also has a constant for Pi. This interface is used to compute 
+area of given shape. Write Rectangle class and Circle class 
+which implement this interface and override its methods. 
+Write another class having objects of Rectangle class and 
+Circle class and invoke their respective methods. 
+
+Area.java
+
+package InterfaceAbstractpkg;
+
+public interface Area {
+	double PI = 3.14159;
+
+	void compute();
+
+	void print();
+
+}
+
+AreaDemo.java
+
+package InterfaceAbstractpkg;
+import java.util.Scanner;
+public class AreaDemo {
+	public static void main(String[] args) {
+		float len, bre, radius;
+		Scanner sc  = new Scanner(System.in);
+		System.out.println("Enter the Length: ");
+		len = sc.nextFloat();
+		System.out.println("Enter the Breadth: ");
+		bre = sc.nextFloat();
+		Rectangle rec = new Rectangle(len, bre);
+		System.out.println("Calculating Area of Rectangle:");
+		rec.compute();
+		rec.print();
+		System.out.println();
+		System.out.println("Enter the Radius: ");
+		radius = sc.nextFloat();	
+		Circle c = new Circle(radius);
+		System.out.println("Calculating Area of Circle:");
+
+		c.compute();
+		c.print();
+		
+		
+	}
+}
+
+Circle.java
+
+package InterfaceAbstractpkg;
+
+public class Circle implements Area {
+private double radius, area;
+
+
+public Circle(double radius) {
+	this.radius = radius;
+}
+
+
+public void compute() {
+	area = PI * radius * radius;
+}
+
+public void print() {
+	System.out.println("Area of Circle: " + area);
+}
+}
+
+Rectangle.java
+
+package InterfaceAbstractpkg;
+
+public class Rectangle implements Area {
+private double length, breadth, area;
+
+public Rectangle(double length, double breadth) {
+	this.length = length;
+	this.breadth = breadth;
+	}
+
+public void compute() {
+	area = length * breadth;
+}
+
+public void print() {
+	System.out.println("Area of Rectangle: " + area);
+}
+
+}
+
+
+Que 6 :Write an interface Employee having methods viz, 
+enroll(),terminate(),calculatePay(). Write classes 
+ProductionDepartment, EngineeringDepartment to implement 
+Employee interface and override its methods. enroll() method 
+should take details from the employee and add him / her to 
+the respective department and print a confirmatory message. 
+terminate() should remove an employee from the department 
+with a print statement. calculatePay() should print the total 
+salary of the employee depending on his/her department and 
+pay scale of that department. 
+
+Employee.java
+
+package pkgQuestion6;
+ 
+public interface Employee {
+	public void enroll(String name, int id);
+
+	public void terminate(int id);
+
+	public void calculatePay();
+}
+
+EngineeringDepartment
+
+package pkgQuestion6;
+
+// EngineeringDepartment class implementing Employee interface
+public class EngineeringDepartment implements Employee {
+
+	    private String employeeName;
+	    private int employeeId;
+	    private boolean isEnrolled;
+	    private double monthlySalary = 5000.0; // Example monthly salary for engineering department
+
+	    @Override
+	    public void enroll(String name, int id) {
+	        this.employeeName = name;
+	        this.employeeId = id;
+	        this.isEnrolled = true;
+	        System.out.println("Employee " + name + " (ID: " + id + ") enrolled in Engineering Department.");
+	    }
+
+	    @Override
+	    public void terminate(int id) {
+	        if (this.employeeId == id && this.isEnrolled) {
+	            this.isEnrolled = false;
+	            System.out.println("Employee " + this.employeeName + " (ID: " + id + ") terminated from Engineering Department.");
+	        } else {
+	            System.out.println("Employee with ID " + id + " not found in Engineering Department.");
+	        }
+	    }
+
+	    @Override
+	    public void calculatePay() {
+	        if (this.isEnrolled) {
+	            System.out.println("Salary for " + this.employeeName + " (ID: " + this.employeeId + ") in Engineering Department: $" + monthlySalary);
+	        } else {
+	            System.out.println("Employee " + this.employeeName + " (ID: " + this.employeeId + ") is not enrolled.");
+	        }
+	    }
+	}
+
+Main.java
+
+package pkgQuestion6;
+
+public class Main {
+	public static void main(String[] args) {
+        // Create objects of ProductionDepartment and EngineeringDepartment
+        Employee productionEmployee = new ProductionDepartment();
+        Employee engineeringEmployee = new EngineeringDepartment();
+
+        // Enroll employees
+        productionEmployee.enroll("Vedant Girjapure", 101);
+        engineeringEmployee.enroll("Atharv Kankatre", 102);
+
+        // Calculate pay
+        productionEmployee.calculatePay();
+        engineeringEmployee.calculatePay();
+
+        // Terminate employees
+        productionEmployee.terminate(101);
+        engineeringEmployee.terminate(102);
+
+        // Attempt to calculate pay after termination
+        productionEmployee.calculatePay();
+        engineeringEmployee.calculatePay();
+    }
+}
+
+ProductionDepartment.java
+
+package pkgQuestion6;
+
+public class ProductionDepartment implements Employee {
+
+	private String employeeName;
+    private int employeeId;
+    private boolean isEnrolled;
+    private double hourlyRate = 15.0; // Example hourly rate for production department
+
+    @Override
+    public void enroll(String name, int id) {
+        this.employeeName = name;
+        this.employeeId = id;
+        this.isEnrolled = true;
+        System.out.println("Employee " + name + " (ID: " + id + ") enrolled in Production Department.");
+    }
+
+    @Override
+    public void terminate(int id) {
+        if (this.employeeId == id && this.isEnrolled) {
+            this.isEnrolled = false;
+            System.out.println("Employee " + this.employeeName + " (ID: " + id + ") terminated from Production Department.");
+        } else {
+            System.out.println("Employee with ID " + id + " not found in Production Department.");
+        }
+    }
+
+    @Override
+    public void calculatePay() {
+        if (this.isEnrolled) {
+            double hoursWorked = 40; // Example: assuming 40 hours worked in a week
+            double salary = hoursWorked * hourlyRate;
+            System.out.println("Salary for " + this.employeeName + " (ID: " + this.employeeId + ") in Production Department: $" + salary);
+        } else {
+            System.out.println("Employee " + this.employeeName + " (ID: " + this.employeeId + ") is not enrolled.");
+        }
+    }
+}
+
+
+
+
+Que 7 :You are running a shared cab service. Write a class, 
+BookARide. In this class write the method, bookSeat(int 
+totalNoOfBooking) In bookSeat() if totalNoOfBooking 
+exceeds 4 throw RideOverBooked exception. Write your own 
+user defined exception class, RideOverBooked.
+
+BookARide.java
+
+package pkgQuestion7;
+
+public class BookARide {
+	private static final int MAX_SEATS = 4;//Maximum number of seats in the cab.
+	
+	//method to book seats.
+	public void bookSeat(int totalNoOfBooking) throws RideOverBooked{
+		if (totalNoOfBooking > MAX_SEATS) {
+			throw new RideOverBooked("Cannot book more than " + MAX_SEATS + " seats. Requested seats: " + totalNoOfBooking);
+			}else {
+				System.out.println(totalNoOfBooking + " seat(s) booked successfully!");
+				
+			}
+	}
+}
+
+RideBookingDemo.java
+
+package pkgQuestion7;
+
+public class RideBookingDemo {
+	public static void main(String[] args) {
+	BookARide cabService = new BookARide();
+	
+	try {
+		//Attempt to book seats
+		cabService.bookSeat(3);//valid booking
+		cabService.bookSeat(5);//This will throw RideOverBooked exception
+		
+	}catch(RideOverBooked e){
+		System.out.println("Error: " + e.getMessage());
+	}
+	}
+}
+
+RideOverBooked.java
+
+package pkgQuestion7;
+ 
+public class RideOverBooked extends Exception {
+	public RideOverBooked(String message) {
+		super(message);
+	}
+}
+
+
+Que 8 :Define an Account class with variables acc_no, acc_type, 
+name and balance. Write a program to accept data of 10 
+account holders. Save these objects using collection 
+framework class of your choice. Print names of customers 
+having balance greater than 10,000 
+
+Account.java
+
+package pkgQuestion8;
+
+public class Account {
+	int acc_no;
+	String acc_type;
+	String name;
+	double balance;
+
+	// Constructor to initialize account details
+	public Account(int acc_no, String acc_type, String name, double balance) {
+		this.acc_no = acc_no;
+		this.acc_type = acc_type;
+		this.name = name;
+		this.balance = balance;
+	}
+
+	// Getter for balance
+	public double getBalance() {
+		return balance;
+	}
+
+	// Getter for name
+	public String getName() {
+		return name;
+	}
+}
+
+AccountHolders.java
+
+package pkgQuestion8;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class AccountHolders {
+	public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Account> accounts = new ArrayList<>();
+
+        // Accept data for 10 account holders
+        for (int i = 1; i <= 10; i++) {
+            System.out.println("Enter details for account holder " + i + ":");
+            System.out.print("Account Number: ");
+            int acc_no = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+            System.out.print("Account Type: ");
+            String acc_type = scanner.nextLine();
+            System.out.print("Name: ");
+            String name = scanner.nextLine();
+            System.out.print("Balance: ");
+            double balance = scanner.nextDouble();
+            scanner.nextLine(); // Consume newline
+
+            // Create Account object and add to the list
+            accounts.add(new Account(acc_no, acc_type, name, balance));
+        }
+
+        // Print names of customers with balance greater than 10,000
+        System.out.println("\nCustomers with balance greater than 10,000:");
+        for (Account account : accounts) {
+            if (account.getBalance() > 10000) {
+                System.out.println(account.getName());
+            }
+        }
+
+        scanner.close();
+    }
+}
+
+
+Que 9 :Write an interface, TemperatureConverter. Add methods, 
+convertToFarenheit() and onvertToCelsius(). Add a static 
+method about() which will print the purpose of this interface. 
+Implement the interface into 
+TemperatureConverterImplementation class and override the 
+necessary methods. 
+
+TemperatureConverter.java
+
+package pkgQuestion9;
+ 
+public interface TemperatureConverter {
+	float celcius = 0;
+	float farenheit = 0;
+	
+	public void convertToFarenheit(float celcius);
+	
+	public void convertToCelcius(float farenheit);
+	
+	public static void about() {
+		System.out.println("This is the interface for defining the methods to convert celcius to farenheit and faranheit to celcius.");
+	}
+	
+}
+
+TemperatureConverterImplementation.java
+
+package pkgQuestion9;
+
+public class TemperatureConverterImplementation implements TemperatureConverter {
+
+	float celcius,farenheit;
+	
+	
+	@Override
+	public void convertToFarenheit(float celcius) {
+		farenheit = (celcius * 9/5) + 32;
+		System.out.println("The celcius Temprature is:"+ celcius + "And it is equivalant to " + farenheit + " Farenheit");
+		
+	}
+
+	@Override
+	public void convertToCelcius(float farenheit) {
+		celcius = (farenheit - 32) * 5/9; 
+		System.out.println("The farenheit Temprature is:"+ farenheit + "And it is equivalant to " + celcius + " Celcius");
+
+	}
+	
+}
+
+TemperatureConvertorDemo.java
+
+package pkgQuestion9;
+import java.util.Scanner;
+
+public class TemperatureConvertorDemo {
+     public static void main(String[] args) {
+		TemperatureConverterImplementation Obj = new TemperatureConverterImplementation();
+//		Obj.convertToCelcius(65);
+//		Obj.convertToFarenheit(28);
+		float cel,far;
+		int opt;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("1. To convert Celcius to Farenheit");
+		System.out.println("2. To convert Farenhehit to Celcius");
+		try {
+		System.out.println("Enter your choice:");
+		opt = sc.nextInt();
+		switch (opt) {
+		case 1: {
+			System.out.println("Enter Temperature in Celcius:");
+			cel = sc.nextFloat();
+			Obj.convertToFarenheit(cel);
+			break;
+			
+		}
+		case 2:{
+			System.out.println("Enter Temperature in Farenheit:");
+			far = sc.nextFloat();
+			Obj.convertToCelcius(far);
+			break;
+			
+		}
+		default:
+			throw new IllegalArgumentException("Unexpected value: " + opt);
+		}
+		}
+		catch(Exception e){
+			System.out.println(e);
+		}
+		
+	
+     }
+}
+
+
+
+Que 10:Write a Java programming to create a banking system with 
+three classes - Bank, Account, SavingsAccount, and 
+CurrentAccount. The bank should have a list of accounts and 
+methods for adding them. Accounts should be an interface 
+with methods to deposit, withdraw, calculate interest, and 
+view balances. SavingsAccount and CurrentAccount should 
+implement the Account interface and have their own unique 
+methods.
+
+Account.java
+
+package pkgQuestion10;
+
+public interface Account {
+	public void deposit(double amount);
+	public void withdraw(double amount);
+	public void calculateInterest();
+	public void viewBalances();
+}
+
+Bank.java
+ 
+package pkgQuestion10;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Bank{
+	private List<Account> accounts;
+	
+	public Bank() {
+		accounts = new ArrayList<>();
+	}
+	
+	public void addAccount(Account account) {
+		accounts.add(account);
+		System.out.println("Account added successfully.");
+	}
+	
+	public void showAllAccounts() {
+		for (Account account : accounts) {
+			account.viewBalances();
+		}
+	}
+public static void main(String[] args) {
+	Bank bank = new Bank();
+	
+	SavingsAccount savings = new SavingsAccount("SA123", 1000.0, 5.0);
+	CurrentAccount current = new CurrentAccount("CA123", 2000.0, 500.0);
+	
+	bank.addAccount(savings);
+	bank.addAccount(current);
+	
+	savings.deposit(500);
+	savings.withdraw(300);
+	current.calculateInterest();
+	current.viewBalances();
+	
+	System.out.println("\nAll Accounts in Bank:");
+	bank.showAllAccounts();
+}
+	
+}
+
+CurrentAccount.java
+
+package pkgQuestion10;
+
+public class CurrentAccount implements Account {
+
+	private String accountNumber;
+	private double balance;
+	private double overdraftLimit;
+	
+	public CurrentAccount(String accountNumber, double initialBalance, double overdraftLimit) {
+		this.accountNumber = accountNumber;
+		this.balance = initialBalance;
+		this.overdraftLimit = overdraftLimit;
+		
+	}
+	@Override
+	public void deposit(double amount) {
+		balance += amount;
+		System.out.println("Deposited: " + amount + " in Current Account " + accountNumber);
+		
+	}
+
+	@Override
+	public void withdraw(double amount) {
+		if (balance + overdraftLimit >= amount) {
+			balance -= amount;
+			System.out.println("Withdrawn: " + amount + " from Current Account " + accountNumber);
+		} else {
+			System.out.println("Overdraft limit exceeded in Current Account " + accountNumber);
+		}
+	}
+
+	@Override
+	public void calculateInterest() {
+		System.out.println("Current Account " + accountNumber + " does not earn interest.");
+		
+	}
+
+	@Override
+	public void viewBalances() {
+		System.out.println("Current Account " + accountNumber + " Balance: " + balance);
+		
+	}
+
+}
+
+SavingsAccount.java
+
+package pkgQuestion10;
+
+public class SavingsAccount implements Account {
+	private String accountNumber;
+	private double balance;
+	private double interestRate;
+	
+	
+
+	public SavingsAccount(String string, double d, double e) {
+		accountNumber = string;
+		balance = d;
+		interestRate = e;
+	}
+
+	public void SavingAccount(String accountNumber, double initialBalance, double interestRate) {
+		this.accountNumber = accountNumber;
+		this.balance = initialBalance;
+		this.interestRate = interestRate;
+	}
+
+	@Override
+	public void deposit(double amount) {
+		balance += amount;
+		System.out.println("Deposited: " + amount + " in Savings Account " + accountNumber);
+		
+	}
+
+	@Override
+	public void withdraw(double amount) {
+		if(balance >= amount) {
+			balance -= amount;
+			System.out.println("Withdrawn: " + amount + "from Savings Account " + accountNumber);
+		}else {
+			System.out.println("Insufficient balance in Savings Account " + accountNumber);
+		}
+		
+	}
+
+	@Override
+	public void calculateInterest() {
+		double interest = balance * interestRate / 100;
+		balance += interest;
+		System.out.println("Interest added: " + interest + " to Savings Account " + accountNumber);
+		
+	}
+
+	@Override
+	public void viewBalances() {
+		System.out.println("Savings Account " + accountNumber + " Balance: " + balance);
+	}
+	
+}
+
+
+
+
+Que 11 :Write an interface, SortingUtility having methods, 
+ascendingSort() and descendingSort(). Implement this in 
+SortArray class and SortString class which will inturn 
+override the two abstract methods in the interface. Create 
+necessary demo class and call relevant methods on the objects
+SortArray.java
+
+package pkgQuestion11;
+
+import java.util.Arrays;
+import java.util.Collections;
+
+public class SortArray implements SortingUtility {
+	
+	private Integer[] arr;
+	public SortArray(Integer[] arr) {
+		this.arr = arr;
+	}
+	
+	@Override
+	public void ascendingSort() {
+		Arrays.sort(arr);
+		System.out.println("Ascending Sorted Array: " + Arrays.toString(arr));
+		}
+
+	@Override
+	public void descendingSort() {
+		Arrays.sort(arr, Collections.reverseOrder());
+		System.out.println("Descending Sorted Array: " + Arrays.toString(arr));
+	}
+
+}
+
+SortingDemo.java
+
+package pkgQuestion11;
+
+public class SortingDemo {
+	public static void main(String[] args) {
+		Integer[] numbers = {5, 2, 9, 1, 7};
+		String text = "Apple";
+		
+		SortArray sortArray = new SortArray(numbers);
+		System.out.println("Sorting Integer Array:");
+		sortArray.ascendingSort();
+		sortArray.descendingSort();
+		
+		SortString sortString = new SortString(text);
+		System.out.println("\nSorting String:");
+		sortString.ascendingSort();
+		sortString.descendingSort();
+	}
+}
+
+SortingUtility.java
+
+package pkgQuestion11;
+public interface SortingUtility {
+	public void ascendingSort();
+
+	public void descendingSort();
+
+}
+
+SortString.java
+
+package pkgQuestion11;
+
+import java.util.Arrays;
+import java.util.Collections;
+
+public class SortString implements SortingUtility {
+	
+	private String str;
+	
+	public SortString(String str) {
+		this.str = str;
+	}
+	@Override
+	public void ascendingSort() {
+		char[] charArray = str.toCharArray();
+		Arrays.sort(charArray);
+		System.out.println("Ascending Sorted String: " + new String(charArray));
+	}
+
+	@Override
+	public void descendingSort() {
+		Character[] charArray = new Character[str.length()];
+		for(int i = 0; i < str.length(); i++) {
+			charArray[i] = str.charAt(i);
+		}
+		Arrays.sort(charArray, Collections.reverseOrder());
+		StringBuilder sb = new StringBuilder(charArray.length);
+		for(Character ch : charArray) {
+			sb.append(ch);
+		}
+		System.out.println("Descending Sorted String: " + sb.toString());
+	}
+
+}
+
+
+Que 12 :Write a Java program to create an interface Encryptable with 
+methods encrypt (String data) and decrypt (String 
+encryptedData) that define encryption and decryption 
+operations. Create two classes AES and RSA that implement 
+the Encryptable interface and provide their own encryption 
+and decryption algorithms. 
+
+AES.java
+
+package pkgQuestion12;
+
+import java.util.Base64;
+
+public class AES implements Encryptable {
+
+	@Override
+	public String encrypt(String data) {
+		return Base64.getEncoder().encodeToString(data.getBytes());
+		
+	}
+
+	@Override
+	public String decrypt(String encryptedData) {
+		return new String(Base64.getDecoder().decode(encryptedData));
+	}
+
+}
+
+Encryptable.java
+
+package pkgQuestion12;
+
+public interface Encryptable {
+ public String encrypt(String data);
+ public String decrypt(String encryptedData);
+ 
+}
+
+EncryptionDemo.java
+
+package pkgQuestion12;
+
+public class EncryptionDemo {
+	 public static void main(String[] args) {
+	        String message = "Hello, Secure World!";
+
+	        // AES Encryption and Decryption
+	        Encryptable aes = new AES();
+	        String aesEncrypted = aes.encrypt(message);
+	        String aesDecrypted = aes.decrypt(aesEncrypted);
+
+	        System.out.println("AES Encrypted: " + aesEncrypted);
+	        System.out.println("AES Decrypted: " + aesDecrypted);
+
+	        // RSA Encryption and Decryption
+	        Encryptable rsa = new RSA();
+	        String rsaEncrypted = rsa.encrypt(message);
+	        String rsaDecrypted = rsa.decrypt(rsaEncrypted);
+
+	        System.out.println("RSA Encrypted: " + rsaEncrypted);
+	        System.out.println("RSA Decrypted: " + rsaDecrypted);
+	    }
+}
+
+RSA.java
+package pkgQuestion12;
+
+public class RSA implements Encryptable {
+
+	@Override
+	public String encrypt(String data) {
+		return new StringBuilder(data).reverse().toString();
+	}
+
+	@Override
+	public String decrypt(String encryptedData) {
+        return new StringBuilder(encryptedData).reverse().toString();
+
+
+	}
+
+}
+
+
+Que 13 :You have developed an e-commerce website for your client. 
+The maximum no of units of a single prodcut that one user 
+can add to the cart is 5. If the user adds more than 5 units of a 
+single product, then your application is expected to throw, 
+MaximumProductsLimitExceededException. Write a 
+custom exception class to achieve this. 
+
+ExceptionDemo.java
+
+package pkgQuestion13;
+
+public class ExceptionDemo {
+	public static void main(String args[]) {
+		ShoppingCart cart = new ShoppingCart();
+		try {
+			cart.addProductToCart("Laptop", 3); //Valid
+			cart.addProductToCart("Phone", 6); // will throw exception
+		}catch(MaximumProductsLimitExceededException e) {
+			System.out.println("Exception: " + e.getMessage());
+		}
+	}
+}
+
+MaximumProductsLimitExceededException.java
+
+package pkgQuestion13;
+
+public class MaximumProductsLimitExceededException extends Exception {
+	public MaximumProductsLimitExceededException(String message) {
+		super(message);
+	}
+}
+
+ShoppingCart.java
+
+package pkgQuestion13;
+
+public class ShoppingCart {
+	private static final int MAX_UNITS_PER_PRODUCT = 5;
+	
+	public void addProductToCart(String product, int quantity) throws MaximumProductsLimitExceededException{
+		if(quantity > MAX_UNITS_PER_PRODUCT) {
+			throw new MaximumProductsLimitExceededException("Cannot add more than " + MAX_UNITS_PER_PRODUCT + " units of " + product + " to the cart.");
+		}
+		System.out.println(quantity + " units of " + product + " added to the cart.");
+	}
+	
+	
+}
+
+
+Que 14 :The manufacturing of your medical company has very strict 
+standards of product specifications. After each pill /tablet is 
+ready, it is weighed. If the weight of the tablet exceeds the 
+allowed limit, TabletWeightExceededException is raised. 
+Using exception handling in Java, write the program to 
+achieve the above business requirement. 
+
+TabletChecker.java
+
+package pkgQuestion14;
+import java.util.Scanner;
+public class TabletChecker {
+	 public static void main(String[] args) {
+	        Scanner scanner = new Scanner(System.in);
+	        
+	        try {
+	            System.out.print("Enter the weight of the tablet (mg): ");
+	            double weight = scanner.nextDouble();
+	            TabletManufacturing.checkTabletWeight(weight);
+	        } catch (TabletWeightExceededException e) {
+	            System.out.println("Exception: " + e.getMessage());
+	        } catch (Exception e) {
+	            System.out.println("Invalid input. Please enter a valid number.");
+	        } finally {
+	            scanner.close();
+	            System.out.println("Tablet weight check completed.");
+	        }
+	    }
+}
+
+TabletManufacturing.java
+
+package pkgQuestion14;
+
+public class TabletManufacturing {
+    private static final double MAX_WEIGHT = 500.0; // Maximum allowed weight in mg
+
+    public static void checkTabletWeight(double weight) throws TabletWeightExceededException {
+        if (weight > MAX_WEIGHT) {
+            throw new TabletWeightExceededException("Tablet weight exceeds the allowed limit of " + MAX_WEIGHT + " mg.");
+        }
+        System.out.println("Tablet weight is within the allowed limit.");
+    }
+}
+
+TabletWeightExceededException.java
+
+package pkgQuestion14;
+
+//Custom Exception Class
+class TabletWeightExceededException extends Exception {
+ public TabletWeightExceededException(String message) {
+     super(message);
+ }
+}
+
+
+Que 15 :When the battery of your mobile phone is less than 20%, the 
+system should generate, LowBatteryException to alert the 
+user to start charging the device. If the battery goes lower 
+than 10 then the system should raise 
+InsufficientChargeException and put the unit on power saver 
+mode.
+
+BatteryMonitor.java
+
+package pkgQuestion15;
+
+public class BatteryMonitor {
+	public static void main(String[] args) {
+        int[] testBatteryLevels = {25, 18, 9, 5, 0};
+
+        for (int level : testBatteryLevels) {
+            MobileDevice device = new MobileDevice(level);
+            try {
+                device.checkBattery();
+            } catch (LowBatteryException e) {
+                System.out.println("Warning: " + e.getMessage());
+            } catch (InsufficientChargeException e) {
+                System.out.println("Critical Alert: " + e.getMessage());
+            }
+        }
+    }
+}
+
+InsufficientChargeException.java
+
+package pkgQuestion15;
+
+public class InsufficientChargeException extends Exception {
+	public InsufficientChargeException(String message) {
+        super(message);
+    }
+}
+
+LowBatteryException.java
+
+package pkgQuestion15;
+
+public class LowBatteryException extends Exception {
+	public LowBatteryException(String message) {
+        super(message);
+    }
+}
+
+MobileDevice.java
+
+package pkgQuestion15;
+
+public class MobileDevice {
+	private int batteryLevel;
+
+    public MobileDevice(int batteryLevel) {
+        this.batteryLevel = batteryLevel;
+    }
+
+    public void checkBattery() throws LowBatteryException, InsufficientChargeException {
+        if (batteryLevel <= 0) {
+            throw new InsufficientChargeException("Battery depleted! Device shutting down.");
+        } else if (batteryLevel < 10) {
+            System.out.println("Battery critically low! Switching to power saver mode.");
+            throw new InsufficientChargeException("Battery critically low! Please charge immediately.");
+        } else if (batteryLevel < 20) {
+            throw new LowBatteryException("Battery low! Please charge your device soon.");
+        } else {
+            System.out.println("Battery level is sufficient: " + batteryLevel + "%");
+        }
+    }
+}
+
+
+Que 16 :You are writing an app for taking names of the volunteers for 
+Cultural Committee of your Institute. According to the 
+guidelines only 15 members are allowed in the committee. 
+Using your app, take the names of the interested candidates 
+till the number reaches 15. 
+
+CulturalCommitteeApp.java
+package pkgQuestion16;
+import java.util.Scanner;
+
+
+public class CulturalCommitteeApp {
+	public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        VolunteerManager manager = new VolunteerManager();
+
+        System.out.println("Enter the names of volunteers (maximum " + VolunteerManager.MAX_VOLUNTEERS + " members):");
+        
+        while (true) {
+            System.out.print("Enter name: ");
+            String name = scanner.nextLine();
+            if (!manager.addVolunteer(name)) {
+                break;
+            }
+        }
+        
+        scanner.close();
+    }
+}
+
+VolunteerManager.java
+
+package pkgQuestion16;
+
+import java.util.ArrayList;
+
+
+public class VolunteerManager {
+	public static final int MAX_VOLUNTEERS = 15;
+	private ArrayList<String> volunteers;
+
+	public VolunteerManager() {
+		this.volunteers = new ArrayList<>();
+	}
+
+	public boolean addVolunteer(String name) {
+		if (volunteers.size() < MAX_VOLUNTEERS) {
+			volunteers.add(name);
+			System.out.println(name + " has been added. Total volunteers: " + volunteers.size());
+			return true;
+		} else {
+			System.out.println("No more candidates allowed as volunteers. Thank you.");
+			return false;
+		}
+	}
+}
+
+
+
+Que 17 :Once the above list of volunteers is finalized, each volunteer 
+needs to pick a historical character as his/her badge icon. 
+Using your app, take the name of the historical character from 
+the volunteers and store them for future uses. Also, no two 
+characters should be the same.
+
+CulturalCommitteeApp.java
+package pkgQuestion17;
+import java.util.Scanner;
+public class CulturalCommitteeApp {
+	public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        VolunteerManager manager = new VolunteerManager();
+
+        System.out.println("Enter the names of volunteers (maximum " + VolunteerManager.MAX_VOLUNTEERS + " members):");
+        
+        while (true) {
+            System.out.print("Enter name: ");
+            String name = scanner.nextLine();
+            if (!manager.addVolunteer(name)) {
+                break;
+            }
+        }
+        
+        System.out.println("Now, each volunteer must pick a historical character as their badge icon.");
+        for (String volunteer : manager.volunteers) {
+            while (true) {
+                System.out.print(volunteer + ", choose your historical character: ");
+                String character = scanner.nextLine();
+                if (manager.assignCharacter(volunteer, character)) {
+                    break;
+                }
+            }
+        }
+        
+        scanner.close();
+    }
+}
+
+VolunteerManager.java
+
+package pkgQuestion17;
+
+import java.util.ArrayList;
+
+public class VolunteerManager {
+	static final int MAX_VOLUNTEERS = 15;
+	ArrayList<String> volunteers;
+	private ArrayList<String> historicalCharacters;
+
+	public VolunteerManager() {
+		this.volunteers = new ArrayList<>();
+		this.historicalCharacters = new ArrayList<>();
+	}
+
+	public boolean addVolunteer(String name) {
+		if (volunteers.size() < MAX_VOLUNTEERS) {
+			volunteers.add(name);
+			System.out.println(name + " has been added. Total volunteers: " + volunteers.size());
+			return true;
+		} else {
+			System.out.println("No more candidates allowed as volunteers. Thank you.");
+			return false;
+		}
+	}
+
+	public boolean assignCharacter(String name, String character) {
+		if (historicalCharacters.contains(character)) {
+			System.out.println("Character already taken! Please choose another.");
+			return false;
+		} else {
+			historicalCharacters.add(character);
+			System.out.println(name + " has chosen " + character + " as their badge icon.");
+			return true;
+		}
+	}
+}
+
+
+Que 18 :The placement cell of your Institute has asked you to share 
+the name of one technology which you are expert in. Using an 
+app, take this from 15 students. The cell then wants you to 
+give a technology count based on the input.
+
+TechnologyCountApp.java
+
+package pkgQuestion18;
+import java.util.*;
+public class TechnologyCountApp {
+	public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        TechnologyCounter counter = new TechnologyCounter();
+        
+        // Taking input from 15 students
+        System.out.println("Enter the technology name for 15 students:");
+        for (int i = 0; i < 15; i++) {
+            System.out.print("Student " + (i + 1) + ": ");
+            counter.addTechnology(scanner.nextLine());
+        }
+        
+        // Getting and displaying the count of each technology
+        System.out.println("\nTechnology Count:");
+        for (Map.Entry<String, Integer> entry : counter.getTechnologyCount().entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+        
+        scanner.close();
+    }
+}
+
+TechnologyCounter.java
+
+package pkgQuestion18;
+import java.util.*;
+public class TechnologyCounter {
+private List<String> technologies;
+    
+    public TechnologyCounter() {
+        technologies = new ArrayList<>();
+    }
+    
+    public void addTechnology(String tech) {
+        technologies.add(tech.trim());
+    }
+    
+    public Map<String, Integer> getTechnologyCount() {
+        Collections.sort(technologies);
+        Map<String, Integer> techCount = new LinkedHashMap<>();
+        for (String tech : technologies) {
+            techCount.put(tech, techCount.getOrDefault(tech, 0) + 1);
+        }
+        return techCount;
+    }
+}
+
+
+Que 19 :For the recently held HR meet, the CR and LR of division A 
+and B marked the attendance for their respective classes in 
+separate lists. The TPO cell wants a consolidated list of 
+FYMCA students who were present for the event.
+
+AttendanceManager.java
+
+package pkgQuestion19;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class AttendanceManager {
+	public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        AttendanceProcessor processor = new AttendanceProcessor();
+
+        // Get attendance lists for both divisions
+        ArrayList<String> divisionA = processor.getAttendanceList(scanner, "Division A");
+        ArrayList<String> divisionB = processor.getAttendanceList(scanner, "Division B");
+
+        // Get consolidated list
+        ArrayList<String> consolidatedList = processor.consolidateAttendance(divisionA, divisionB);
+
+        // Display the consolidated list
+        System.out.println("\nConsolidated Attendance List:");
+        for (String student : consolidatedList) {
+            System.out.println(student);
+        }
+
+        scanner.close();
+    }
+}
+
+AttendanceProcessor.java
+
+package pkgQuestion19;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class AttendanceProcessor {
+	public ArrayList<String> getAttendanceList(Scanner scanner, String divisionName) {
+        ArrayList<String> divisionList = new ArrayList<>();
+        System.out.println("Enter the number of students present in " + divisionName + ":");
+        int numStudents = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
+        System.out.println("Enter the names of students present in " + divisionName + ":");
+        for (int i = 0; i < numStudents; i++) {
+            divisionList.add(scanner.nextLine());
+        }
+        return divisionList;
+    }
+
+    public ArrayList<String> consolidateAttendance(ArrayList<String> divisionA, ArrayList<String> divisionB) {
+        ArrayList<String> consolidatedList = new ArrayList<>(divisionA);
+        for (String student : divisionB) {
+            if (!consolidatedList.contains(student)) { // Avoid duplicate names
+                consolidatedList.add(student);
+            }
+        }
+        return consolidatedList;
+    }
+}
+
+
+Que 20 :Sports cell of the Institute needs to choose its core team from 
+those students who participated in the recently held sports 
+events. For this, the sports coordinator has decided to consider 
+the participants of Football and Cricket. Only those players 
+who participated in BOTH these games will be considered for 
+the core team.
+
+SportsCoreTeam.java
+
+package pkgQuestion20;
+import java.util.Scanner;
+public class SportsCoreTeam {
+	public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        SportsTeamProcessor processor = new SportsTeamProcessor();
+
+        processor.addFootballPlayers(scanner);
+        processor.addCricketPlayers(scanner);
+        processor.findCoreTeam();
+        processor.displayCoreTeam();
+
+        scanner.close();
+    }
+}
+
+SportsTeamProcessor.java
+
+package pkgQuestion20;
+import java.util.ArrayList;
+import java.util.Scanner;
+public class SportsTeamProcessor {
+	private ArrayList<String> footballPlayers;
+    private ArrayList<String> cricketPlayers;
+    private ArrayList<String> coreTeam;
+
+    public SportsTeamProcessor() {
+        footballPlayers = new ArrayList<>();
+        cricketPlayers = new ArrayList<>();
+        coreTeam = new ArrayList<>();
+    }
+
+    public void addFootballPlayers(Scanner scanner) {
+        System.out.print("Enter the number of students in Football team: ");
+        int footballCount = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
+        System.out.println("Enter the names of Football players:");
+        for (int i = 0; i < footballCount; i++) {
+            footballPlayers.add(scanner.nextLine());
+        }
+    }
+
+    public void addCricketPlayers(Scanner scanner) {
+        System.out.print("Enter the number of students in Cricket team: ");
+        int cricketCount = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
+        System.out.println("Enter the names of Cricket players:");
+        for (int i = 0; i < cricketCount; i++) {
+            cricketPlayers.add(scanner.nextLine());
+        }
+    }
+
+    public void findCoreTeam() {
+        for (String player : footballPlayers) {
+            if (cricketPlayers.contains(player)) {
+                coreTeam.add(player);
+            }
+        }
+    }
+
+    public void displayCoreTeam() {
+        System.out.println("\nStudents selected for the Sports Core Team:");
+        if (coreTeam.isEmpty()) {
+            System.out.println("No common players found.");
+        } else {
+            for (String player : coreTeam) {
+                System.out.println(player);
+            }
+        }
+    }
+}
+
+
+
+Que 21 :The top three scorers in the coding competition will be given 
+a certificate and trophy by the Coding Club. Using Vector, 
+take the final scores (out of 100) of the participating coders 
+and find the top three using only the max() function available 
+in Collections. 
+
+CodingClubDemo.java
+
+package pkgQuestion21;
+import java.util.*;
+public class CodingClubDemo {
+	public static void main(String[] args) {
+        // Example scores
+        List<Integer> scores = new ArrayList<>(Arrays.asList(85, 92, 78, 90, 88, 95, 100, 97, 94));
+        
+        // Get the top three scores
+        List<Integer> topThree = TopScorers.getTopThree(scores);
+        
+        // Display the top three scorers
+        System.out.println("Top three scores are: " + topThree);
+    }
+}
+
+TopScorers.java
+
+package pkgQuestion21;
+import java.util.*;
+
+class TopScorers {
+	   // Method to find top three scores
+	   public static List<Integer> getTopThree(List<Integer> scores) {
+	       List<Integer> topScores = new ArrayList<>();
+	        
+	       for (int i = 0; i < 3; i++) {
+	           if (scores.isEmpty()) break; // Handle case where there are less than 3 scores
+	            
+	           int maxScore = Collections.max(scores); // Find the max score
+	           topScores.add(maxScore);
+	           scores.remove(Integer.valueOf(maxScore)); // Remove the first occurrence of the max score
+	       }
+	        
+	       return topScores;
+	   }
+}
+
+
+
+Que 22 :KKR and MumbaiIndians are going to play the kickstart 
+match of this year’s IPL season. Using Vector, you have taken 
+the names of the players in each team and are displaying the 
+same. But there is a last minute change in the batting line up 
+of KKR. In place of QuintonDeKock, the team will send 
+Anukul Roy at two down position.
+
+BattingLineup.java
+
+package pkgQuestion22;
+import java.util.ArrayList;
+public class BattingLineup {
+	private ArrayList<String> lineup;
+
+    // Constructor to initialize lineup
+    public BattingLineup(ArrayList<String> players) {
+        this.lineup = new ArrayList<>(players);
+    }
+
+    // Method to update a player in the lineup
+    public void updatePlayer(int index, String newPlayer) {
+        if (index >= 0 && index < lineup.size()) {
+            lineup.set(index, newPlayer);
+        } else {
+            System.out.println("Invalid index! No changes made.");
+        }
+    }
+
+    // Method to display the lineup
+    public void displayLineup(String teamName) {
+        System.out.println(teamName + " Batting Lineup:");
+        for (int i = 0; i < lineup.size(); i++) {
+            System.out.println((i + 1) + ". " + lineup.get(i));
+        }
+        System.out.println();
+    }
+}
+
+IPLMatch.java
+
+package pkgQuestion22;
+import java.util.ArrayList;
+public class IPLMatch {
+	public static void main(String[] args) {
+        // Initial batting lineups
+        ArrayList<String> kkrPlayers = new ArrayList<>();
+        kkrPlayers.add("VenkateshIyer");
+        kkrPlayers.add("NitishRana");
+        kkrPlayers.add("QuintonDeKock");
+        kkrPlayers.add("ShreyasIyer");
+        kkrPlayers.add("AndreRussell");
+
+        ArrayList<String> miPlayers = new ArrayList<>();
+        miPlayers.add("RohitSharma");
+        miPlayers.add("IshanKishan");
+        miPlayers.add("SuryakumarYadav");
+        miPlayers.add("TilakVarma");
+        miPlayers.add("HardikPandya");
+
+        // Creating objects for each team's lineup
+        BattingLineup kkr = new BattingLineup(kkrPlayers);
+        BattingLineup mi = new BattingLineup(miPlayers);
+
+        // Display original lineups
+        kkr.displayLineup("KKR");
+        mi.displayLineup("Mumbai Indians");
+
+        // Update KKR lineup: Replacing QuintonDeKock with AnukulRoy at position 2 (index 2)
+        kkr.updatePlayer(2, "AnukulRoy");
+
+        // Display updated KKR lineup
+        System.out.println("After last-minute change in KKR's batting order:\n");
+        kkr.displayLineup("KKR");
+    }
+}
+
+
+Que 23 : In the e-commerce portal designed by you, the customer adds 
+products to the shopping cart. Use a vector to hold the objects 
+of Product class. At the time of billing, access each product 
+object and read its price. Add the cost of all the products and 
+display the bill total.
+
+EcomDemo.java
+
+package pkgQuestion23;
+import java.util.Scanner;
+public class EcomDemo {
+	public static void main(String[] args) {
+        ShoppingCart cart = new ShoppingCart();
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("\n1. Add Product");
+            System.out.println("2. Checkout");
+            System.out.println("3. Exit");
+            System.out.print("Choose an option: ");
+            
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter product name: ");
+                    String name = scanner.nextLine();
+                    System.out.print("Enter product price: ");
+                    double price = scanner.nextDouble();
+                    cart.addProduct(new Product(name, price));
+                    break;
+                case 2:
+                    cart.checkout();
+                    break;
+                case 3:
+                    System.out.println("Thank you for visiting!");
+                    scanner.close();
+                    return;
+                default:
+                    System.out.println("Invalid option! Try again.");
+            }
+        }
+    }
+}
+
+Product.java
+
+package pkgQuestion23;
+
+public class Product {
+	 private String name;
+	    private double price;
+
+	    public Product(String name, double price) {
+	        this.name = name;
+	        this.price = price;
+	    }
+
+	    public double getPrice() {
+	        return price;
+	    }
+
+	    public String getName() {
+	        return name;
+	    }
+}
+
+ShoppingCart.java
+
+package pkgQuestion23;
+import java.util.Vector;
+public class ShoppingCart {
+	private Vector<Product> cart;
+
+    public ShoppingCart() {
+        cart = new Vector<>();
+    }
+
+    public void addProduct(Product product) {
+        cart.add(product);
+        System.out.println(product.getName() + " added to cart.");
+    }
+
+    public void checkout() {
+        if (cart.isEmpty()) {
+            System.out.println("Can we help you in finding what you were looking for?");
+            return;
+        }
+
+        double total = 0;
+        System.out.println("\nBilling Details:");
+        for (Product product : cart) {
+            System.out.println(product.getName() + ": $" + product.getPrice());
+            total += product.getPrice();
+        }
+
+        System.out.println("Total Amount: $" + total);
+    }
+}
+
+
+Que 24 :During the Marathon event the organisers maintained a list to 
+hold the details of the finishers. Once the marathon got over, 
+they displayed the details of the first runner to finish the marathon and the last one to finish the same. Write an app 
+having the objects of MarathonRunner class in to a vector list,finishers.
+
+MarathonApp.java
+
+package pkgQuestion24;
+import java.util.*;
+
+public class MarathonApp {
+	public static void main(String[] args) {
+        List<MarathonRunner> finishers = new ArrayList<>();
+
+        // Adding some marathon runners (Badge Number, Start Time, End Time)
+        finishers.add(new MarathonRunner("Vedant Girjapure", 101, "06:00:00", "08:30:00"));
+        finishers.add(new MarathonRunner("Atharv Kankatre", 102, "06:00:00", "08:15:00")); // First finisher
+        finishers.add(new MarathonRunner("Akash Dhadage", 103, "06:00:00", "09:00:00"));  // Last finisher
+
+        // Sorting runners based on their end time
+        finishers.sort(MarathonRunner.endTimeComparator);
+
+        // Displaying the first and last finisher
+        if (!finishers.isEmpty()) {
+            System.out.println("First Finisher:\n" + finishers.get(0));
+            System.out.println("\nLast Finisher:\n" + finishers.get(finishers.size() - 1));
+        } else {
+            System.out.println("No runners finished the marathon.");
+        }
+    }
+}
+
+MarathonRunner.java
+
+package pkgQuestion24;
+import java.util.Comparator;
+
+public class MarathonRunner {
+	private String name;
+    private int badgeNbr;
+    private String startTime;
+    private String endTime;
+
+    public MarathonRunner(String name, int badgeNbr, String startTime, String endTime) {
+        this.name = name;
+        this.badgeNbr = badgeNbr;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getBadgeNbr() {
+        return badgeNbr;
+    }
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Runner: " + name + " | Badge No: " + badgeNbr + 
+               " | Start Time: " + startTime + " | End Time: " + endTime;
+    }
+
+    // Comparator for sorting by end time
+    public static Comparator<MarathonRunner> endTimeComparator = new Comparator<MarathonRunner>() {
+        public int compare(MarathonRunner r1, MarathonRunner r2) {
+            return r1.getEndTime().compareTo(r2.getEndTime());
+        }
+    };
+}
+
